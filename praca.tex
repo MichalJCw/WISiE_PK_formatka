@@ -1,0 +1,50 @@
+% !TEX program = pdflatex
+% !BIB program = biber
+% =========================================================================
+%  Praca dyplomowa – Wydział Inżynierii Środowiska i Energetyki PK
+%
+%  Kompilacja:  latexmk            (ustawienia w pliku latexmkrc)
+%  lub ręcznie: pdflatex praca → biber praca → pdflatex praca → pdflatex praca
+%
+%  Struktura katalogów:
+%    strony/         – strona tytułowa (tu wpisuje się dane pracy: autor,
+%                      temat, promotor...), oświadczenie, wykaz oznaczeń
+%    rozdzialy/      – rozdziały pracy (jeden plik = jeden rozdział)
+%    zalaczniki/     – załączniki
+%    rysunki/        – pliki graficzne; rysunki/logo/ – oficjalne logo PK i WIŚiE
+%    dane/, kod/     – pliki CSV i kody programów wczytywane do pracy
+%    literatura.bib  – baza opisów bibliograficznych
+%    wisiepk.cls     – ustawienia formatowania (zwykle bez zmian)
+% =========================================================================
+\documentclass[jednostronnie]{wisiepk}
+% Dostępne opcje klasy:
+%   dwustronnie – wydruk dwustronny (marginesy lustrzane, puste strony)
+%   arial       – krój bezszeryfowy zamiast Times
+%   bibpodzial  – literatura podzielona na publikacje / normy / akty prawne / WWW
+
+\addbibresource{literatura.bib}
+
+% Miejsce na własne pakiety i polecenia.
+
+\begin{document}
+
+\input{strony/tytulowa}      % ← tu uzupełnij dane pracy
+\input{strony/oswiadczenie}
+
+\tableofcontents
+\input{strony/oznaczenia}
+
+\input{rozdzialy/01_cel_i_zakres}
+\input{rozdzialy/02_wprowadzenie}
+\input{rozdzialy/03_redakcja}
+\input{rozdzialy/04_zrodla}
+\input{rozdzialy/05_podsumowanie}
+
+\wykazliteratury
+\spisrysunkow
+\spistabel
+
+\zalaczniki
+\input{zalaczniki/zalacznik_a}
+
+\end{document}

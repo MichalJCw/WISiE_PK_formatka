@@ -1,0 +1,345 @@
+% =========================================================================
+%  literatura.bib – opisy bibliograficzne
+%
+%  * Do wykazu literatury trafiają tylko pozycje zacytowane w tekście.
+%  * Nazwiska: „Nazwisko, Imię”, kolejne osoby łączy się słowem „and”.
+%  * Instytucja jako autor – w podwójnych nawiasach: {{Nazwa instytucji}}.
+%  * Daty dostępu (urldate) w formacie RRRR-MM-DD.
+%  * Wpisy oznaczone „SZABLON” zawierają dane zastępcze – podmień je.
+%  * Na końcu pliku znajdują się puste wzory dla innych rodzajów źródeł.
+% =========================================================================
+
+
+% ---------- Książki -------------------------------------------------------
+
+@book{pelech2009,
+  author    = {Pełech, Aleksander},
+  title     = {Wentylacja i klimatyzacja -- podstawy},
+  edition   = {2},
+  publisher = {Oficyna Wydawnicza Politechniki Wrocławskiej},
+  location  = {Wrocław},
+  year      = {2009},
+  isbn      = {978-83-7493-445-9},
+}
+
+@book{duffie2013,
+  author    = {Duffie, John A. and Beckman, William A.},
+  title     = {Solar Engineering of Thermal Processes},
+  edition   = {4},
+  publisher = {John Wiley \& Sons},
+  location  = {Hoboken},
+  year      = {2013},
+  isbn      = {978-0-470-87366-3},
+  langid    = {english},
+}
+
+@book{metcalf2014,
+  author    = {Tchobanoglous, George and Stensel, H. David and
+               Tsuchihashi, Ryujiro and Burton, Franklin L.},
+  title     = {Wastewater Engineering: Treatment and Resource Recovery},
+  edition   = {5},
+  publisher = {McGraw-Hill Education},
+  location  = {New York},
+  year      = {2014},
+  isbn      = {978-0-07-340118-8},
+  note      = {Metcalf \& Eddy, AECOM},
+  langid    = {english},
+}
+
+
+% ---------- Rozdział w pracy zbiorowej ------------------------------------
+
+@incollection{nuorkivi2016,
+  author    = {Nuorkivi, Arto},
+  title     = {District heating and cooling policies worldwide},
+  booktitle = {Advanced District Heating and Cooling (DHC) Systems},
+  editor    = {Wiltshire, Robin},
+  series    = {Woodhead Publishing Series in Energy},
+  number    = {87},
+  publisher = {Woodhead Publishing},
+  location  = {Waltham},
+  year      = {2016},
+  pages     = {17--41},
+  doi       = {10.1016/B978-1-78242-374-4.00002-1},
+  langid    = {english},
+}
+
+
+% ---------- Artykuły w czasopismach --------------------------------------
+
+@article{lund2014,
+  author       = {Lund, Henrik and Werner, Sven and Wiltshire, Robin and
+                  Svendsen, Svend and Thorsen, Jan Eric and
+                  Hvelplund, Frede and Mathiesen, Brian Vad},
+  title        = {4th Generation District Heating (4GDH): Integrating smart
+                  thermal grids into future sustainable energy systems},
+  journaltitle = {Energy},
+  volume       = {68},
+  year         = {2014},
+  pages        = {1--11},
+  doi          = {10.1016/j.energy.2014.02.089},
+  langid       = {english},
+}
+
+@article{werner2017,
+  author       = {Werner, Sven},
+  title        = {International review of district heating and cooling},
+  journaltitle = {Energy},
+  volume       = {137},
+  year         = {2017},
+  pages        = {617--631},
+  doi          = {10.1016/j.energy.2017.04.045},
+  langid       = {english},
+}
+
+
+% ---------- Referat konferencyjny ----------------------------------------
+
+@inproceedings{crawley2005,
+  author    = {Crawley, Drury B. and Hand, Jon W. and Kummert, Michaël and
+               Griffith, Brent T.},
+  title     = {Contrasting the capabilities of building energy performance
+               simulation programs},
+  booktitle = {Building Simulation 2005: Ninth International IBPSA
+               Conference},
+  location  = {Montréal},
+  year      = {2005},
+  langid    = {english},
+}
+
+
+% ---------- Raporty i dokumentacje ---------------------------------------
+
+@report{iea2022,
+  author      = {{International Energy Agency}},
+  title       = {The Future of Heat Pumps},
+  type        = {World Energy Outlook Special Report},
+  institution = {IEA},
+  location    = {Paryż},
+  year        = {2022},
+  url         = {https://www.iea.org/reports/the-future-of-heat-pumps},
+  urldate     = {2026-10-09},
+  langid      = {english},
+}
+
+@report{epanet22,
+  author      = {Rossman, Lewis A. and Woo, Hyoungmin and Tryby, Michael and
+                 Shang, Feng and Janke, Robert and Haxton, Terranna},
+  title       = {EPANET 2.2 User Manual},
+  type        = {Raport},
+  number      = {EPA/600/R-20/133},
+  institution = {U.S. Environmental Protection Agency},
+  location    = {Cincinnati},
+  year        = {2020},
+  url         = {https://epanet22.readthedocs.io},
+  urldate     = {2026-10-09},
+  langid      = {english},
+}
+
+
+% ---------- Normy ---------------------------------------------------------
+% Pole „number” – pełne oznaczenie normy z datą wydania.
+
+@standard{pn12831,
+  number       = {PN-EN 12831-1:2017-08},
+  title        = {Charakterystyka energetyczna budynków -- Metoda obliczania
+                  projektowego obciążenia cieplnego -- Część 1: Projektowe
+                  obciążenie cieplne, Moduł M3-3},
+  organization = {Polski Komitet Normalizacyjny},
+  location     = {Warszawa},
+  year         = {2017},
+}
+
+@standard{pn6946,
+  number       = {PN-EN ISO 6946:2017-10},
+  title        = {Komponenty budowlane i elementy budynku -- Opór cieplny
+                  i współczynnik przenikania ciepła -- Metody obliczania},
+  organization = {Polski Komitet Normalizacyjny},
+  location     = {Warszawa},
+  year         = {2017},
+}
+
+@standard{pn14001,
+  number       = {PN-EN ISO 14001:2015-09},
+  title        = {Systemy zarządzania środowiskowego -- Wymagania i wytyczne
+                  stosowania},
+  organization = {Polski Komitet Normalizacyjny},
+  location     = {Warszawa},
+  year         = {2015},
+}
+
+@standard{iso52000,
+  number       = {ISO 52000-1:2017},
+  title        = {Energy performance of buildings -- Overarching EPB
+                  assessment -- Part 1: General framework and procedures},
+  organization = {International Organization for Standardization},
+  location     = {Genewa},
+  year         = {2017},
+  langid       = {english},
+}
+
+
+% ---------- Akty prawne ---------------------------------------------------
+% Cytuj aktualny tekst jednolity – sprawdź na https://isap.sejm.gov.pl
+
+@legislation{ustawaPOS,
+  title        = {Ustawa z dnia 27 kwietnia 2001 r. -- Prawo ochrony
+                  środowiska},
+  howpublished = {t.j. Dz.U. z 2025 r. poz. 647 z późn. zm.},
+}
+
+@legislation{rozpWT,
+  title        = {Rozporządzenie Ministra Infrastruktury z dnia 12 kwietnia
+                  2002 r. w sprawie warunków technicznych, jakim powinny
+                  odpowiadać budynki i ich usytuowanie},
+  howpublished = {t.j. Dz.U. z 2022 r. poz. 1225 z późn. zm.},
+}
+
+@legislation{epbd2024,
+  title        = {Dyrektywa Parlamentu Europejskiego i Rady (UE) 2024/1275
+                  z dnia 24 kwietnia 2024 r. w sprawie charakterystyki
+                  energetycznej budynków (wersja przekształcona)},
+  howpublished = {Dz.Urz. UE L, 2024/1275, 8.05.2024},
+}
+
+
+% ---------- Strony internetowe -------------------------------------------
+
+@online{pvgis,
+  author  = {{European Commission, Joint Research Centre}},
+  title   = {Photovoltaic Geographical Information System (PVGIS)},
+  url     = {https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis_en},
+  urldate = {2026-10-09},
+  langid  = {english},
+}
+
+@online{tlm,
+  author     = {{Ministerstwo Inwestycji i Rozwoju}},
+  title      = {Dane do obliczeń energetycznych budynków},
+  titleaddon = {Typowe lata meteorologiczne i statystyczne dane klimatyczne
+                dla obszaru Polski},
+  url        = {https://www.gov.pl/web/archiwum-inwestycje-rozwoj/dane-do-obliczen-energetycznych-budynkow},
+  urldate    = {2026-10-09},
+}
+
+@online{isap,
+  author  = {{Kancelaria Sejmu RP}},
+  title   = {Internetowy System Aktów Prawnych (ISAP)},
+  url     = {https://isap.sejm.gov.pl},
+  urldate = {2026-10-09},
+}
+
+
+% ---------- Dane i oprogramowanie ----------------------------------------
+
+@dataset{imgw,
+  author  = {{Instytut Meteorologii i Gospodarki Wodnej -- Państwowy
+              Instytut Badawczy}},
+  title   = {Dane publiczne IMGW-PIB},
+  url     = {https://danepubliczne.imgw.pl},
+  urldate = {2026-10-09},
+}
+
+@software{qgis,
+  author       = {{QGIS.org}},
+  title        = {QGIS Geographic Information System},
+  version      = {3.40},
+  organization = {QGIS Association},
+  year         = {2024},
+  url          = {https://www.qgis.org},
+  urldate      = {2026-10-09},
+}
+
+
+% ---------- Wpisy-szablony z danymi zastępczymi ---------------------------
+
+@manual{katalog,
+  author       = {{Nazwa Producenta}},
+  title        = {Karta katalogowa: powietrzna pompa ciepła, model XYZ},
+  organization = {Nazwa Producenta sp. z o.o.},
+  location     = {Miejscowość},
+  year         = {2025},
+  url          = {https://www.example.com/karta-katalogowa.pdf},
+  urldate      = {2026-10-09},
+  note         = {SZABLON -- zastąp rzeczywistą kartą katalogową},
+}
+
+@thesis{praca2024,
+  author      = {Nazwisko, Imię},
+  title       = {Tytuł cytowanej pracy dyplomowej},
+  type        = {Praca dyplomowa inżynierska},
+  institution = {Politechnika Krakowska, Wydział Inżynierii Środowiska
+                 i Energetyki},
+  location    = {Kraków},
+  year        = {2024},
+  note        = {SZABLON -- promotor: dr inż. Imię Nazwisko},
+}
+
+
+% ---------- Puste wzory do skopiowania (usuń znak % na początku wierszy) --
+%
+% @article{klucz,
+%   author       = {Nazwisko, Imię and Nazwisko, Imię},
+%   title        = {Tytuł artykułu},
+%   journaltitle = {Tytuł czasopisma},
+%   volume       = {},
+%   number       = {},
+%   year         = {},
+%   pages        = {--},
+%   doi          = {},
+% }
+%
+% @book{klucz,
+%   author    = {Nazwisko, Imię},
+%   title     = {Tytuł książki},
+%   edition   = {},
+%   publisher = {Wydawnictwo},
+%   location  = {Miejscowość},
+%   year      = {},
+%   isbn      = {},
+% }
+%
+% @collection{klucz,               % cała praca zbiorowa pod redakcją
+%   editor    = {Nazwisko, Imię},
+%   title     = {Tytuł monografii},
+%   publisher = {Wydawnictwo},
+%   location  = {Miejscowość},
+%   year      = {},
+% }
+%
+% @standard{klucz,
+%   number       = {PN-EN XXXX:RRRR-MM},
+%   title        = {Tytuł normy},
+%   organization = {Polski Komitet Normalizacyjny},
+%   location     = {Warszawa},
+%   year         = {},
+% }
+%
+% @legislation{klucz,
+%   title        = {Ustawa z dnia ... r. o ...},
+%   howpublished = {t.j. Dz.U. z RRRR r. poz. NNN z późn. zm.},
+% }
+%
+% @online{klucz,
+%   author  = {{Instytucja}},
+%   title   = {Tytuł strony},
+%   url     = {https://...},
+%   urldate = {RRRR-MM-DD},
+% }
+%
+% @patent{klucz,
+%   author = {Nazwisko, Imię},
+%   title  = {Tytuł wynalazku},
+%   number = {PL 000000 B1},
+%   holder = {Uprawniony z patentu},
+%   year   = {},
+% }
+%
+% @thesis{klucz,
+%   author      = {Nazwisko, Imię},
+%   title       = {Tytuł rozprawy},
+%   type        = {Rozprawa doktorska},
+%   institution = {Uczelnia, Wydział},
+%   location    = {Miejscowość},
+%   year        = {},
+% }

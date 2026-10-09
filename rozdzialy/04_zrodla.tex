@@ -1,0 +1,124 @@
+\chapter{Korzystanie ze źródeł}
+\label{chap:zrodla}
+
+Każda informacja, wzór, rysunek, tabela lub dane zaczerpnięte z~cudzego
+opracowania muszą zostać opatrzone odwołaniem do źródła. Opisy
+bibliograficzne przechowuje się w~pliku \texttt{literatura.bib}, a~wykaz
+literatury na końcu pracy tworzy się automatycznie -- trafiają do niego
+wyłącznie pozycje przywołane w~tekście, w~kolejności pierwszego cytowania.
+
+\section{Sposób cytowania}
+\label{sec:cytowanie}
+
+Odwołanie ma postać numeru w~nawiasie kwadratowym (polecenie
+\verb|\cite{klucz}|). Umieszcza się je \textbf{przed} kropką kończącą
+zdanie:
+\begin{itemize}
+  \item \emph{Pompy ciepła mogą w~znacznym stopniu ograniczyć zużycie gazu
+        ziemnego do ogrzewania budynków \cite{iea2022}.} -- poprawnie,
+  \item \emph{Pompy ciepła mogą w~znacznym stopniu ograniczyć zużycie gazu
+        ziemnego do ogrzewania budynków. \cite{iea2022}} -- niepoprawnie.
+\end{itemize}
+
+Inne często potrzebne warianty:
+\begin{itemize}
+  \item kilka źródeł naraz -- \verb|\cite{lund2014,werner2017,iea2022}|
+        daje \cite{lund2014,werner2017,iea2022}; kolejne numery są
+        automatycznie łączone w~zakres,
+  \item wskazanie strony lub rozdziału -- \verb|\cite[s.~25]{duffie2013}|
+        daje \cite[s.~25]{duffie2013},
+  \item nazwisko autora w~zdaniu -- \verb|\textcite{werner2017}|:
+        \emph{\textcite{werner2017} przedstawił przegląd \dots};
+        przy więcej niż dwóch autorach pojawia się skrót „i~in.”:
+        \emph{\textcite{lund2014} zdefiniowali \dots}
+\end{itemize}
+
+Jeżeli promotor wymaga stylu autor--rok, np.\ \emph{(Werner, 2017)},
+w~pliku \texttt{wisiepk.cls} należy zmienić \texttt{style=numeric-comp} na
+\texttt{style=authoryear} i~używać polecenia \verb|\parencite|.
+
+\section{Przykłady opisów bibliograficznych}
+\label{sec:przyklady-bib}
+
+Tabela~\ref{tab:typy-bib} zestawia najczęściej cytowane rodzaje źródeł
+wraz z~typem wpisu w~pliku \texttt{literatura.bib} i~przykładem
+z~wykazu literatury tej formatki.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Rodzaje źródeł i~odpowiadające im typy wpisów}
+  \label{tab:typy-bib}
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X
+                                   >{\ttfamily}l c@{}}
+    \toprule
+    \textbf{Rodzaj źródła} & \textbf{\normalfont\bfseries Typ wpisu} & \textbf{Przykład} \\
+    \midrule
+    książka (podręcznik, monografia)       & @book          & \cite{pelech2009,duffie2013,metcalf2014} \\
+    rozdział w~pracy zbiorowej             & @incollection  & \cite{nuorkivi2016} \\
+    artykuł w~czasopiśmie                  & @article       & \cite{lund2014,werner2017} \\
+    referat konferencyjny                  & @inproceedings & \cite{crawley2005} \\
+    raport, instrukcja, dokumentacja       & @report        & \cite{iea2022,epanet22} \\
+    norma krajowa lub międzynarodowa       & @standard      & \cite{pn12831,pn6946,pn14001,iso52000} \\
+    ustawa, rozporządzenie, dyrektywa      & @legislation   & \cite{ustawaPOS,rozpWT,epbd2024} \\
+    strona internetowa, serwis             & @online        & \cite{pvgis,tlm,isap} \\
+    zbiór danych                           & @dataset       & \cite{imgw} \\
+    oprogramowanie                         & @software      & \cite{qgis} \\
+    karta katalogowa producenta            & @manual        & \cite{katalog} \\
+    praca dyplomowa                        & @thesis        & \cite{praca2024} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Normy}
+
+W~opisie normy podaje się jej pełne oznaczenie \emph{wraz z~datą
+wydania} (np.\ PN-EN 12831-1:2017-08), tytuł, wydawcę i~rok. Cytuje się
+wersję faktycznie wykorzystaną w~obliczeniach, a~jej aktualność warto
+sprawdzić w~katalogu Polskiego Komitetu Normalizacyjnego. Przykładowy
+wpis pokazano na listingu~\ref{lst:bib-norma}.
+
+\begin{lstlisting}[language={}, caption={Wpis normy w~pliku
+  literatura.bib}, label={lst:bib-norma}]
+@standard{pn12831,
+  number       = {PN-EN 12831-1:2017-08},
+  title        = {Charakterystyka energetyczna budynków -- Metoda
+                  obliczania projektowego obciążenia cieplnego --
+                  Część 1: Projektowe obciążenie cieplne, Moduł M3-3},
+  organization = {Polski Komitet Normalizacyjny},
+  location     = {Warszawa},
+  year         = {2017},
+}
+\end{lstlisting}
+
+\subsection{Akty prawne}
+
+Ustawy i~rozporządzenia cytuje się według \emph{aktualnego tekstu
+jednolitego} ogłoszonego w~Dzienniku Ustaw, z~dopiskiem „z~późn.~zm.”, jeśli
+po jego ogłoszeniu wprowadzono zmiany. Stan prawny i~numer tekstu
+jednolitego najłatwiej sprawdzić w~Internetowym Systemie Aktów Prawnych
+\cite{isap}. Akty prawa Unii Europejskiej cytuje się według Dziennika
+Urzędowego UE \cite{epbd2024}.
+
+\subsection{Źródła internetowe}
+
+Przy stronach internetowych obowiązkowo podaje się adres URL oraz datę
+dostępu (pole \texttt{urldate}), ponieważ treść strony może się zmienić
+(listing~\ref{lst:bib-www}). Należy korzystać przede wszystkim ze
+źródeł instytucjonalnych (urzędy, instytuty badawcze, organizacje
+międzynarodowe). Encyklopedie redagowane przez użytkowników, fora i~blogi
+nie są wiarygodnym źródłem w~pracy dyplomowej.
+
+\begin{lstlisting}[language={}, caption={Wpis strony internetowej
+  w~pliku literatura.bib}, label={lst:bib-www}]
+@online{pvgis,
+  author       = {{European Commission, Joint Research Centre}},
+  title        = {Photovoltaic Geographical Information System (PVGIS)},
+  url          = {https://joint-research-centre.ec.europa.eu/...},
+  urldate      = {2026-10-09},
+}
+\end{lstlisting}
+
+Nazwę instytucji występującej w~roli autora ujmuje się w~podwójne
+nawiasy klamrowe, aby nie została potraktowana jak imię i~nazwisko.
+Datę dostępu zapisuje się w~formacie RRRR-MM-DD -- w~wykazie literatury
+zostanie wydrukowana w~formie polskiej.

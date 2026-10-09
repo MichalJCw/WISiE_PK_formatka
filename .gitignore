@@ -1,0 +1,20 @@
+# Pliki pomocnicze LaTeX-a
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lol
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.xdv
+
+# Robocze pliki lokalne – nie publikować
+_oryginal/

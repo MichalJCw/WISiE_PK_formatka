@@ -1,0 +1,54 @@
+\chapter{Wprowadzenie}
+\label{chap:wprowadzenie}
+
+Wprowadzenie osadza temat pracy w~szerszym kontekście: wyjaśnia, dlaczego
+podjęty problem jest istotny z~punktu widzenia inżynierii środowiska lub
+energetyki, jakie są obecne tendencje i~wymagania prawne oraz jakie
+rozwiązania są stosowane w~praktyce. Przykładowo, w~pracy dotyczącej
+ciepłownictwa można przywołać koncepcję sieci czwartej generacji
+\cite{lund2014} oraz przegląd stanu ciepłownictwa na świecie
+\cite{werner2017}, a~w~pracy o~budynkach -- wymagania dyrektywy
+w~sprawie charakterystyki energetycznej budynków \cite{epbd2024}.
+
+Poniżej zebrano wymagania edytorskie, które formatka spełnia automatycznie.
+Przy pisaniu pracy nie trzeba ich ustawiać ręcznie -- wystarczy korzystać
+z~poleceń opisanych w~rozdziale~\ref{chap:redakcja}.
+
+\section{Wymagania edytorskie}
+\label{sec:wymagania}
+
+Podstawowe parametry składu zestawiono w~tabeli~\ref{tab:parametry}.
+Każdy rozdział główny rozpoczyna się od nowej strony. Strona tytułowa jest
+wliczana do numeracji, lecz numer nie jest na niej drukowany.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Parametry formatowania pracy dyplomowej}
+  \label{tab:parametry}
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.4cm}X@{}}
+    \toprule
+    \textbf{Element} & \textbf{Ustawienie} \\
+    \midrule
+    Format strony      & A4, druk jedno- lub dwustronny \\
+    Marginesy          & lewy (wewnętrzny) \qty{3.5}{cm}, pozostałe \qty{2.5}{cm} \\
+    Krój i stopień     & Times New Roman lub Arial, \qty{11}{pt} \\
+    Interlinia         & 1,25 wiersza (tekst), pojedyncza (podpisy, tabele, kod) \\
+    Akapit             & wyjustowany, wcięcie pierwszego wiersza \qty{0.63}{cm} \\
+    Tytuły rozdziałów  & \qty{14}{pt}, pogrubione, numeracja „1.” \\
+    Podrozdziały       & \qty{13}{pt} i~\qty{12}{pt}, pogrubione, numeracja „1.1.” i~„1.1.1.” \\
+    Podpisy            & kursywa, rysunek -- pod obiektem, tabela -- nad obiektem \\
+    Numeracja obiektów & w~obrębie rozdziału: rys.~3.1, tabela~3.1, wzór~(3.1) \\
+    Numer strony       & na dole strony, wyśrodkowany \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Druk i oprawa}
+
+Jeżeli jeden z~egzemplarzy ma być wydrukowany dwustronnie (np.\ w~miękkiej
+oprawie), należy w~pliku \texttt{praca.tex} zmienić opcję klasy
+z~\texttt{jednostronnie} na \texttt{dwustronnie}. Marginesy staną się
+wówczas lustrzane (szerszy margines zawsze od strony grzbietu), rozdziały
+będą zaczynały się na stronach nieparzystych, a~wstawione strony puste nie
+otrzymają numeru. Wersję do archiwizacji w~systemie ASAP zwykle składa się
+jednostronnie -- warto potwierdzić to z~promotorem.

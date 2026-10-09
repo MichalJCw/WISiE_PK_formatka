@@ -1,0 +1,40 @@
+{
+  // Ustawienia rozszerzenia LaTeX Workshop dla tej formatki.
+  // Domyślny przepis nie wymaga Perla (pdflatex → biber → pdflatex ×2).
+  "latex-workshop.latex.tools": [
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": ["%DOCFILE%"]
+    },
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "-pdf", "%DOC%"]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex ➞ biber ➞ pdflatex ×2",
+      "tools": ["pdflatex", "biber", "pdflatex", "pdflatex"]
+    },
+    {
+      "name": "pdflatex (szybki podgląd, bez bibliografii)",
+      "tools": ["pdflatex"]
+    },
+    {
+      "name": "latexmk (wymaga Perla)",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.build.forceRecipeUsage": true,
+  "latex-workshop.latex.rootFile.useSubFile": false,
+  "latex-workshop.view.pdf.viewer": "tab",
+  "files.encoding": "utf8"
+}

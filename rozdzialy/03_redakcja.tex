@@ -1,0 +1,350 @@
+\chapter{Zasady redagowania tekstu}
+\label{chap:redakcja}
+
+Rozdział pokazuje, jak w~tej formatce wstawia się wzory, rysunki, tabele
+i~fragmenty kodu. Kod źródłowy rozdziału (plik
+\texttt{rozdzialy/03\_redakcja.tex}) można traktować jako ściągę --
+wystarczy skopiować potrzebny fragment i~podmienić treść.
+
+\section{Styl wypowiedzi}
+\label{sec:styl}
+
+Pracę pisze się w~formie bezosobowej. Unika się pierwszej osoby liczby
+pojedynczej i~mnogiej, a~także zwrotów potocznych. Porównanie wariantów
+poprawnych i~niepoprawnych zawiera tabela~\ref{tab:styl}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Przykłady formy bezosobowej}
+  \label{tab:styl}
+  \begin{tabularx}{\linewidth}{@{}Xc@{}}
+    \toprule
+    \textbf{Zdanie} & \textbf{Ocena} \\
+    \midrule
+    Wyniki obliczeń strat ciśnienia zestawiono w~tabeli~3.4. & poprawnie \\
+    Wyniki obliczeń strat ciśnienia przedstawia tabela~3.4.  & poprawnie \\
+    Wyniki obliczeń strat ciśnienia zestawiłem w~tabeli~3.4. & niepoprawnie \\
+    W~naszej pracy policzyliśmy straty ciśnienia.            & niepoprawnie \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Kilka zasad typograficznych, o~które warto zadbać od początku:
+\begin{itemize}
+  \item jednoliterowe spójniki i~przyimki (a, i, o, u, w, z) nie mogą
+        zostawać na końcu wiersza -- po nich wpisuje się tyldę, np.\
+        \verb|w~budynku|,
+  \item liczbę od jednostki oddziela się spacją niełamliwą; najprościej
+        użyć polecenia \verb|\qty|, np.\ \verb|\qty{2.5}{kW}| daje
+        \qty{2.5}{kW} (z~przecinkiem dziesiętnym),
+  \item zakresy liczbowe zapisuje się półpauzą: \verb|10--15| daje 10--15,
+        a~w~połączeniu z~jednostką: \qtyrange{10}{15}{\degreeCelsius},
+  \item cudzysłów polski ma postać „tekst” (\verb|,,tekst''|),
+  \item skróty wyjaśnia się przy pierwszym użyciu, np.\ odnawialne źródła
+        energii (OZE), i~zbiera w~wykazie oznaczeń.
+\end{itemize}
+
+\section{Wzory}
+\label{sec:wzory}
+
+Wzory wyrównuje się do środka, a~ich numery -- w~nawiasach okrągłych -- do
+prawego marginesu. Numeracja jest prowadzona w~obrębie rozdziału. Wzór
+stanowi część zdania, dlatego po nim stawia się przecinek lub kropkę.
+Wielkości występujące we wzorze objaśnia się bezpośrednio pod nim
+(środowisko \texttt{gdzie}), podając jednostki w~nawiasach kwadratowych.
+
+\subsection{Wzór pojedynczy}
+
+Współczynnik przenikania ciepła przegrody złożonej z~warstw jednorodnych
+oblicza się zgodnie z~normą PN-EN ISO 6946 \cite{pn6946} ze wzoru
+\begin{equation}
+  U = \frac{1}{R_\mathrm{si} + \sum\limits_{i=1}^{n}\dfrac{d_i}{\lambda_i}
+      + R_\mathrm{se}},
+  \label{eq:U}
+\end{equation}
+\begin{gdzie}
+  \zm{R_\mathrm{si},\ R_\mathrm{se}}{opór przejmowania ciepła na
+      powierzchni wewnętrznej i~zewnętrznej}{\unit{m^2.K/W}}
+  \zm{d_i}{grubość $i$-tej warstwy}{\unit{m}}
+  \zm{\lambda_i}{obliczeniowy współczynnik przewodzenia ciepła materiału
+      $i$-tej warstwy}{\unit{W/(m.K)}}
+  \zm{n}{liczba warstw przegrody}{}
+\end{gdzie}
+
+Do wzoru odwołuje się poleceniem \verb|\eqref|, np.: \emph{wartość $U$
+obliczona ze wzoru~\eqref{eq:U} dla ściany z~listingu~\ref{lst:U} wynosi
+ok.\ \qty{0.23}{W/(m^2.K)}}. Zmienne zapisuje się kursywą, a~indeksy
+opisowe (np.\ \emph{si} -- \emph{surface internal}) -- pismem prostym:
+\verb|R_\mathrm{si}|. Dzięki pakietowi \texttt{icomma} przecinek
+dziesiętny we wzorach nie tworzy zbędnego odstępu: $\theta_\mathrm{e} =
+-20$~°C, $\eta = 0,92$.
+
+\subsection{Układ kilku wzorów}
+
+Kilka powiązanych zależności wyrównuje się względem znaku równości
+(środowisko \texttt{align}). Spadek ciśnienia w~przewodzie opisuje wzór
+Darcy'ego--Weisbacha~\eqref{eq:dw}, a~współczynnik oporów liniowych dla
+przepływu burzliwego -- równanie Colebrooka--White'a~\eqref{eq:cw}:
+\begin{align}
+  \Delta p &= \lambda_\mathrm{f}\,\frac{L}{D}\,\frac{\rho\,w^2}{2},
+  \label{eq:dw}\\
+  \frac{1}{\sqrt{\lambda_\mathrm{f}}} &= -2\log_{10}\left(
+    \frac{2,51}{\mathit{Re}\,\sqrt{\lambda_\mathrm{f}}}
+    + \frac{k}{3,71\,D}\right),
+  \label{eq:cw}
+\end{align}
+\begin{gdzie}
+  \zm{\Delta p}{strata ciśnienia na długości przewodu}{\unit{Pa}}
+  \zm{\lambda_\mathrm{f}}{współczynnik oporów liniowych}{}
+  \zm{L,\ D}{długość i~średnica wewnętrzna przewodu}{\unit{m}}
+  \zm{\rho}{gęstość wody}{\unit{kg/m^3}}
+  \zm{w}{średnia prędkość przepływu}{\unit{m/s}}
+  \zm{\mathit{Re}}{liczba Reynoldsa}{}
+  \zm{k}{chropowatość bezwzględna ścianki}{\unit{m}}
+\end{gdzie}
+
+\section{Rysunki}
+\label{sec:rysunki}
+
+Rysunkiem jest każda ilustracja: wykres, schemat, mapa, zdjęcie czy zrzut
+ekranu -- w~podpisie wszystkie oznacza się skrótem „Rys.”. Rysunek
+wyśrodkowuje się, a~podpis (kursywą, bez kropki na końcu) umieszcza pod
+nim. \textbf{Każdy rysunek musi zostać omówiony w~tekście}, a~odwołanie
+powinno poprzedzać sam rysunek. Ilustracje rastrowe powinny mieć
+rozdzielczość co najmniej \qty{300}{dpi}; wykresy najlepiej wstawiać jako
+grafikę wektorową (PDF) albo rysować bezpośrednio w~\LaTeX-u. Jeżeli
+rysunek pochodzi z~literatury lub powstał na podstawie cudzych danych,
+w~podpisie podaje się źródło.
+
+\subsection{Wykres rysowany w~\LaTeX-u}
+
+Przykładową krzywą grzewczą, czyli zależność temperatury wody
+zasilającej i~powrotnej od temperatury powietrza zewnętrznego, pokazano na
+rys.~\ref{fig:krzywa}. Wykres powstał w~pakiecie \texttt{pgfplots}, więc
+czcionki i~przecinki dziesiętne są spójne z~tekstem pracy.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.82\linewidth, height=6.2cm,
+      xmin=-20, xmax=20, ymin=15, ymax=75,
+      x dir=reverse,
+      xlabel={Temperatura zewnętrzna $\theta_\mathrm{e}$ [°C]},
+      ylabel={Temperatura wody [°C]},
+      grid=major, grid style={black!15},
+      legend pos=north west, legend cell align=left,
+      every axis plot/.append style={thick, samples=60, domain=-20:19},
+    ]
+      \addplot[black]        {20 + 50*((20 - x)/40)^0.77};
+      \addplot[black, dashed]{20 + 35*((20 - x)/40)^0.77};
+      \legend{zasilanie, powrót}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Przykładowa krzywa grzewcza dla parametrów obliczeniowych
+    70/55\,°C (dane umowne)}
+  \label{fig:krzywa}
+\end{figure}
+
+\subsection{Schemat blokowy}
+
+Proste schematy można rysować w~pakiecie TikZ. Rysunek~\ref{fig:schemat}
+przedstawia uproszczony schemat systemu ciepłowniczego.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      node distance=8mm and 9mm,
+      blok/.style={draw, thick, rounded corners=2pt, align=center,
+                   minimum width=2.5cm, minimum height=1.2cm, font=\small},
+      zas/.style={-{Latex[length=2.2mm]}, thick},
+      pow/.style={-{Latex[length=2.2mm]}, thick, dashed}]
+    \node[blok] (zrodlo) {Źródło\\ciepła};
+    \node[blok, right=of zrodlo] (siec) {Sieć\\ciepłownicza};
+    \node[blok, right=of siec]   (wezel) {Węzeł\\cieplny};
+    \node[blok, right=of wezel]  (odb) {Instalacje\\c.o. i~c.w.u.};
+    \draw[zas] ([yshift=3mm]zrodlo.east) -- ([yshift=3mm]siec.west);
+    \draw[zas] ([yshift=3mm]siec.east)   -- ([yshift=3mm]wezel.west);
+    \draw[zas] ([yshift=3mm]wezel.east)  -- ([yshift=3mm]odb.west);
+    \draw[pow] ([yshift=-3mm]odb.west)   -- ([yshift=-3mm]wezel.east);
+    \draw[pow] ([yshift=-3mm]wezel.west) -- ([yshift=-3mm]siec.east);
+    \draw[pow] ([yshift=-3mm]siec.west)  -- ([yshift=-3mm]zrodlo.east);
+  \end{tikzpicture}
+  \caption{Schemat systemu ciepłowniczego (linia ciągła -- zasilanie,
+    przerywana -- powrót)}
+  \label{fig:schemat}
+\end{figure}
+
+\subsection{Rysunek z~pliku}
+
+Do wstawiania plików graficznych służy polecenie \verb|\includegraphics|
+(rys.~\ref{fig:plik}), a~same pliki umieszcza się w~katalogu
+\texttt{rysunki/}. Rozszerzenie pliku można pominąć. Użyte tu obrazy zastępcze (pakiet \texttt{mwe}) są
+dostępne w~każdej dystrybucji \LaTeX-a -- należy je zastąpić własnymi
+ilustracjami.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.55\linewidth]{example-image-a}
+  \caption{Rysunek wstawiony z~pliku graficznego (źródło: opracowanie
+    własne na podstawie \cite{pvgis})}
+  \label{fig:plik}
+\end{figure}
+
+\subsection{Rysunek złożony}
+
+Kilka powiązanych ilustracji można zestawić obok siebie jako jeden rysunek
+z~podpisami cząstkowymi (rys.~\ref{fig:zlozony}). Do części rysunku
+odwołuje się tak samo: rys.~\ref{fig:zlozony-a}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{example-image-b}
+    \caption{stan przed modernizacją}
+    \label{fig:zlozony-a}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{example-image-c}
+    \caption{stan po modernizacji}
+    \label{fig:zlozony-b}
+  \end{subfigure}
+  \caption{Przykład rysunku złożonego z~dwóch części}
+  \label{fig:zlozony}
+\end{figure}
+
+\section{Tabele}
+\label{sec:tabele}
+
+Tabelę poprzedza podpis umieszczony \emph{nad} nią. Tak jak rysunek, musi
+ona zostać przywołana i~skomentowana w~tekście. Jednostki podaje się
+w~nagłówkach kolumn, a~liczby w~kolumnie wyrównuje względem przecinka
+dziesiętnego (kolumna typu \texttt{S} z~pakietu \texttt{siunitx}).
+
+\subsection{Tabela wpisana ręcznie}
+
+Orientacyjne wartości współczynnika przewodzenia ciepła wybranych
+materiałów budowlanych zestawiono w~tabeli~\ref{tab:lambda}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Współczynnik przewodzenia ciepła wybranych materiałów (wartości
+    orientacyjne)}
+  \label{tab:lambda}
+  \begin{tabular}{@{}l S[table-format=4.0] S[table-format=1.3]@{}}
+    \toprule
+    \textbf{Materiał} & {\textbf{Gęstość} $\rho$ [\unit{kg/m^3}]}
+                      & {$\lambda$ [\unit{W/(m.K)}]} \\
+    \midrule
+    beton zwykły                          & 2400 & 1.70  \\
+    mur z~cegły ceramicznej pełnej        & 1800 & 0.77  \\
+    tynk cementowo-wapienny               & 1850 & 0.82  \\
+    drewno sosnowe (w~poprzek włókien)    & 550  & 0.16  \\
+    wełna mineralna                       & 40   & 0.035 \\
+    styropian EPS                         & 15   & 0.040 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Tabela wczytana z~pliku CSV}
+
+Dane z~arkusza kalkulacyjnego nie muszą być przepisywane ręcznie. Wystarczy
+zapisać je jako plik CSV (w~polskiej wersji Excela separatorem jest średnik,
+a~znakiem dziesiętnym przecinek) i~wczytać pakietem \texttt{pgfplotstable}.
+Tabela~\ref{tab:csv} powstała w~ten sposób z~pliku
+\texttt{dane/zuzycie\_ciepla.csv}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Miesięczne zużycie ciepła w~budynku przykładowym (dane umowne)}
+  \label{tab:csv}
+  \pgfplotstabletypeset[
+    col sep=semicolon,
+    /pgf/number format/read comma as period,
+    columns/miesiac/.style={string type, column name={Miesiąc},
+                            column type={c}},
+    columns/t_zewn/.style={column name={$\theta_\mathrm{e}$ [°C]},
+                           fixed, fixed zerofill, precision=1,
+                           column type={r}},
+    columns/Q_co/.style={column name={$Q_\text{c.o.}$ [GJ]},
+                         fixed, fixed zerofill, precision=1,
+                         column type={r}},
+    columns/Q_cwu/.style={column name={$Q_\text{c.w.u.}$ [GJ]},
+                          fixed, fixed zerofill, precision=1,
+                          column type={r}},
+    every head row/.style={before row=\toprule, after row=\midrule},
+    every last row/.style={after row=\bottomrule},
+  ]{dane/zuzycie_ciepla.csv}
+\end{table}
+
+Z~tego samego pliku można od razu sporządzić wykres
+(rys.~\ref{fig:csv}) -- po zmianie danych w~pliku CSV zarówno tabela, jak
+i~wykres zaktualizują się przy kolejnej kompilacji.
+
+\pgfplotstableread[col sep=semicolon]{dane/zuzycie_ciepla.csv}\tabCieplo
+\begin{figure}[htbp]
+  \centering
+  \pgfplotsset{/pgf/number format/read comma as period}
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.9\linewidth, height=6cm,
+      ybar stacked, bar width=11pt, ymin=0,
+      xtick=data, xticklabels from table={\tabCieplo}{miesiac},
+      xlabel={Miesiąc}, ylabel={Zużycie ciepła [GJ]},
+      ymajorgrids, grid style={black!15},
+      legend style={at={(0.5,0.97)}, anchor=north, legend columns=2,
+                    draw=none, font=\small},
+      enlarge x limits=0.05,
+    ]
+      \addplot[fill=black!55, draw=black]
+        table[x expr=\coordindex, y=Q_co]{\tabCieplo};
+      \addplot[fill=black!15, draw=black]
+        table[x expr=\coordindex, y=Q_cwu]{\tabCieplo};
+      \legend{c.o., c.w.u.}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Wykres sporządzony na podstawie danych z~tabeli~\ref{tab:csv}}
+  \label{fig:csv}
+\end{figure}
+
+\section{Fragmenty kodu}
+\label{sec:kod}
+
+Krótkie fragmenty programów wstawia się w~środowisku \texttt{lstlisting}
+(listing~\ref{lst:U}), dłuższe -- z~pliku poleceniem
+\verb|\lstinputlisting| i~najlepiej w~załączniku (listing~\ref{lst:dp}
+w~załączniku~\ref{zal:kod}). Polskie znaki w~komentarzach są obsługiwane.
+
+\begin{lstlisting}[language=Python, caption={Obliczanie współczynnika
+  przenikania ciepła przegrody}, label={lst:U}]
+def wspolczynnik_U(warstwy, R_si=0.13, R_se=0.04):
+    """Zwraca współczynnik przenikania ciepła U [W/(m2K)].
+
+    warstwy - lista krotek (grubość d [m], lambda [W/(mK)])
+    """
+    R_t = R_si + R_se + sum(d / lam for d, lam in warstwy)
+    return 1.0 / R_t
+
+# Ściana: tynk 1,5 cm, cegła pełna 25 cm, EPS 15 cm, tynk 0,5 cm
+sciana = [(0.015, 0.82), (0.25, 0.77), (0.15, 0.040), (0.005, 0.82)]
+print(f"U = {wspolczynnik_U(sciana):.3f} W/(m2K)")
+\end{lstlisting}
+
+\section{Wyliczenia i~przypisy}
+
+Wyliczenia punktowane stosuje się dla elementów równorzędnych, numerowane
+-- gdy liczy się kolejność, np.\ dla etapów obliczeń:
+\begin{enumerate}
+  \item zebranie danych o~budynku i~lokalizacji,
+  \item obliczenie strat ciepła przez przenikanie i~wentylację:
+    \begin{enumerate}
+      \item dla poszczególnych pomieszczeń,
+      \item dla całego budynku,
+    \end{enumerate}
+  \item dobór źródła ciepła.
+\end{enumerate}
+Przypisy dolne służą do krótkich uzupełnień, które przerywałyby tok
+wywodu\footnote{Przypisów nie należy używać zamiast wykazu literatury --
+źródła podaje się w~nawiasach kwadratowych w~tekście.}.

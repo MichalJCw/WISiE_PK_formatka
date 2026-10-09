@@ -1,0 +1,91 @@
+% =========================================================================
+%  STRONA TYTUŁOWA
+%
+%  1. Uzupełnij dane w bloku poniżej – trafią one na stronę tytułową,
+%     do oświadczenia i do metadanych PDF.
+%  2. Część „Układ strony” nie wymaga edycji.
+% =========================================================================
+
+% ------------------------- DANE PRACY ------------------------------------
+\autor{Imię Nazwisko}
+\plecautora{M}              % M – formy męskie, K – żeńskie (w oświadczeniu)
+
+\tytulPL{Temat pracy dyplomowej w~języku polskim}
+
+\rodzajpracy{inżynierska}   % inżynierska / magisterska
+\formastudiow{stacjonarne}  % stacjonarne / niestacjonarne
+\stopienstudiow{I}          % I – studia inżynierskie, II – magisterskie
+\kierunek{Inżynieria Środowiska}  % np. Energetyka, Geoinformatyka
+\specjalnosc{brak}
+
+\promotor{dr inż. Imię Nazwisko}
+\recenzent{dr hab. inż. Imię Nazwisko}  % puste – pole „Recenzent” znika
+
+\miejsce{Kraków}
+\rok{2026}
+
+\zgodaASAP{TAK}             % zgoda na udostępnienie pracy w ASAP: TAK / NIE
+% -------------------------------------------------------------------------
+
+\metadanepdf
+
+% ------------------------- UKŁAD STRONY ----------------------------------
+\newgeometry{top=1.7cm, bottom=1.3cm, left=2.2cm, right=2.2cm}
+\thispagestyle{empty}
+\begingroup
+\setstretch{1}
+\fontfamily{phv}\selectfont         % krój bezszeryfowy, jak na wzorze wydziału
+\setlength{\parindent}{0pt}
+\newcommand{\etykieta}[1]{{\fontsize{9.5}{11}\selectfont\color{black!55}#1}}
+
+% Nagłówek: logo wydziału i sygnet PK
+\logowydzialu\hfill\logopk\par
+\vspace{5mm}
+{\color{wisieniebieski}\rule{\linewidth}{0.6pt}}\par
+
+\vspace*{\stretch{1.3}}
+\begin{center}
+  {\fontsize{22}{27}\selectfont\color{pkgranat}\dana{autor}\par}
+  \vspace{9mm}
+  {\fontsize{17}{22}\selectfont\bfseries\color{pkgranat}\dana{tytulPL}\par}
+  \vspace{6mm}
+  {\fontsize{11}{13}\selectfont praca \dana{rodzajpracy}\par}
+
+  \vspace{13mm}
+  {\fontsize{11}{17}\selectfont
+    \textbf{studia \dana{formastudiow} \dana{stopienstudiow} stopnia}\\
+    \etykieta{kierunek studiów:} \dana{kierunek}\\
+    \etykieta{specjalność:} \dana{specjalnosc}\par}
+\end{center}
+
+\vspace*{\stretch{1}}
+\begin{flushright}
+  \etykieta{Promotor:}\\[2pt]
+  {\fontsize{11.5}{14}\selectfont\bfseries\dana{promotor}}
+  \jeslidana{recenzent}{\\[9mm]
+    \etykieta{Recenzent:}\\[2pt]
+    {\fontsize{11.5}{14}\selectfont\dana{recenzent}}}
+\end{flushright}
+
+\vspace*{\stretch{1.1}}
+\begin{center}
+  {\fontsize{11.5}{14}\selectfont\dana{miejsce}, \dana{rok}}
+\end{center}
+\vspace*{\stretch{0.5}}
+
+% Stopka z danymi wydziału
+{\color{wisieniebieski}\rule{\linewidth}{0.4pt}}\par
+\vspace{2.5mm}
+\begin{minipage}[b]{0.62\linewidth}
+  \fontsize{7.5}{9.5}\selectfont
+  {\bfseries\color{pkgranat}Wydział Inżynierii Środowiska i~Energetyki}\\
+  ul. Warszawska 24, 31-155 Kraków\\
+  tel. 12 628 28 01, s-0@pk.edu.pl
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\fontsize{11}{13}\selectfont\bfseries\color{wisieniebieski}%
+  www.wisie.pk.edu.pl
+\end{minipage}\par
+\endgroup
+\restoregeometry
+\cleardoublepage
