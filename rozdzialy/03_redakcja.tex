@@ -103,6 +103,50 @@ przepływu burzliwego -- równanie Colebrooka--White'a~\eqref{eq:cw}:
   \zm{k}{chropowatość bezwzględna ścianki}{\unit{m}}
 \end{gdzie}
 
+\subsection{Równania Maxwella -- wspólna numeracja grupy wzorów}
+\label{sec:maxwell}
+
+Środowisko \texttt{subequations} pozwala nadać grupie wzorów wspólny numer
+z~kolejnymi literami. Przykładem są równania Maxwella w~postaci
+mikroskopowej, zapisane w~układzie SI \cite{feynmanMaxwell}:
+\begin{subequations}
+  \label{eq:maxwell}
+  \begin{align}
+    \nabla\cdot\mathbf{E} &= \frac{\rho_\mathrm{e}}{\varepsilon_0},
+    \label{eq:maxwell-gauss-e}\\
+    \nabla\cdot\mathbf{B} &= 0,
+    \label{eq:maxwell-gauss-b}\\
+    \nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial t},
+    \label{eq:maxwell-faraday}\\
+    \nabla\times\mathbf{B} &= \mu_0\mathbf{J}
+      + \mu_0\varepsilon_0\frac{\partial\mathbf{E}}{\partial t},
+    \label{eq:maxwell-ampere}
+  \end{align}
+\end{subequations}
+\begin{gdzie}
+  \zm{\mathbf{E}}{natężenie pola elektrycznego}{\unit{V/m}}
+  \zm{\mathbf{B}}{indukcja magnetyczna}{\unit{T}}
+  \zm{\rho_\mathrm{e}}{objętościowa gęstość ładunku elektrycznego}{\unit{C/m^3}}
+  \zm{\mathbf{J}}{gęstość prądu elektrycznego}{\unit{A/m^2}}
+  \zm{\varepsilon_0}{przenikalność elektryczna próżni}{\unit{F/m}}
+  \zm{\mu_0}{przenikalność magnetyczna próżni}{\unit{H/m}}
+  \zm{t}{czas}{\unit{s}}
+\end{gdzie}
+
+Wektory wyróżniono pismem pogrubionym (\verb|\mathbf|).
+Operatory $\nabla\cdot$ i~$\nabla\times$ oznaczają odpowiednio dywergencję
+i~rotację, a~$\partial/\partial t$ -- pochodną cząstkową względem czasu.
+Równania~\eqref{eq:maxwell-gauss-e} i~\eqref{eq:maxwell-gauss-b} wyrażają
+prawa Gaussa dla pola elektrycznego i~magnetycznego,
+równanie~\eqref{eq:maxwell-faraday} -- prawo indukcji Faradaya,
+a~równanie~\eqref{eq:maxwell-ampere} -- prawo Ampère'a z~poprawką Maxwella.
+
+Do całej grupy odwołuje się poleceniem \verb|\eqref{eq:maxwell}|,
+które daje~\eqref{eq:maxwell}, a~do pojedynczego równania -- np.\
+\verb|\eqref{eq:maxwell-faraday}|, które daje~\eqref{eq:maxwell-faraday}.
+Przykład pokazuje także skład iloczynu wektorowego, ułamków i~pochodnych
+cząstkowych bez ręcznego wpisywania numerów wzorów.
+
 \section{Rysunki}
 \label{sec:rysunki}
 

@@ -33,9 +33,21 @@ Inne często potrzebne warianty:
         \emph{\textcite{lund2014} zdefiniowali \dots}
 \end{itemize}
 
-Jeżeli promotor wymaga stylu autor--rok, np.\ \emph{(Werner, 2017)},
-w~pliku \texttt{wisiepk.cls} należy zmienić \texttt{style=numeric-comp} na
-\texttt{style=authoryear} i~używać polecenia \verb|\parencite|.
+Dostępne są również następujące polecenia zgodne z~pakietem
+\texttt{natbib}:
+\begin{itemize}
+  \item \verb|\citealt{werner2017}| -- \citealt{werner2017}
+        (w~tym stylu tak samo jak \verb|\cite|),
+  \item \verb|\citep{werner2017}| -- \citep{werner2017}
+        (odpowiednik \verb|\parencite|),
+  \item \verb|\citeyear{werner2017}| -- \citeyear{werner2017} (sam rok, bez nawiasów).
+\end{itemize}
+Nie należy dodatkowo ładować pakietu \texttt{natbib} -- zgodność zapewnia
+już \texttt{biblatex}.
+
+Dla stylu autor--rok ustaw \texttt{style=authoryear} w~\texttt{wisiepk.cls}.
+Wówczas \verb|\citep{werner2017}| daje \emph{(Werner, 2017)},
+a~\verb|\citealt{werner2017}| -- \emph{Werner 2017}.
 
 \section{Przykłady opisów bibliograficznych}
 \label{sec:przyklady-bib}

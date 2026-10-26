@@ -16,7 +16,7 @@
 %  strony/tytulowa.tex.
 % =========================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{wisiepk}[2026/10/09 v1.0 Praca dyplomowa WISiE PK]
+\ProvidesClass{wisiepk}[2026/10/26 v1.0.1 Praca dyplomowa WISiE PK]
 
 % ---------- Opcje -------------------------------------------------------
 \newif\ifwisie@dwustronnie
@@ -34,6 +34,15 @@
   \LoadClass[11pt,a4paper,twoside,openright]{report}
 \else
   \LoadClass[11pt,a4paper,oneside,openany]{report}
+\fi
+
+% Logo wydziału jest zapisane jako PDF 1.6. Zachowaj też wyższą wersję,
+% jeśli została już ustawiona przez użytkownika.
+\RequirePackage{iftex}
+\ifPDFTeX
+  \ifnum\pdfoutput>0
+    \ifnum\pdfminorversion<6 \pdfminorversion=6\relax\fi
+  \fi
 \fi
 
 % ---------- Język, kodowanie, krój pisma ----------------------------------
@@ -271,8 +280,50 @@
 \newcommand{\jeslidana}[2]{%
   \expandafter\ifdefempty\csname wisie@#1\endcsname{}{#2}}
 
+% Kontrola danych nie zmienia treści ani układu PDF. Ostrzeżenia trafiają
+% tylko do logu. Puste M/K i TAK/NIE pozostają dozwolone (skreślenie ręczne).
+\ExplSyntaxOn
+\cs_new_protected:Npn \wisie_sprawdz_wymagane:n #1
+  {
+    \exp_args:Nv \tl_if_blank:nT { wisie@#1 }
+      { \ClassWarningNoLine{wisiepk}{Pole~'#1'~jest~puste.
+          \MessageBreak Uzupelnij~dane~w~strony/tytulowa.tex} }
+  }
+\cs_new_protected:Npn \wisie_sprawdz_przyklad:nn #1#2
+  {
+    \exp_args:Nv \tl_if_in:nnT { wisie@#1 } {#2}
+      { \ClassWarningNoLine{wisiepk}{Pole~'#1'~zawiera~dane~przykladowe.
+          \MessageBreak Uzupelnij~dane~w~strony/tytulowa.tex} }
+  }
+\cs_new_protected:Npn \wisie_sprawdz_wybor:nn #1#2
+  {
+    \tl_set:Nv \l_tmpa_tl { wisie@#1 }
+    \tl_if_blank:VF \l_tmpa_tl
+      {
+        \clist_if_in:nVF {#2} \l_tmpa_tl
+          { \ClassWarningNoLine{wisiepk}{Nieprawidlowa~wartosc~pola~'#1'.
+              \MessageBreak Dozwolone:~#2~lub~puste~pole.
+              \MessageBreak Popraw~dane~w~strony/tytulowa.tex} }
+      }
+  }
+\NewDocumentCommand{\sprawdzdanepracy}{}
+  {
+    \clist_map_inline:nn
+      { autor,tytulPL,rodzajpracy,formastudiow,stopienstudiow,kierunek,
+        specjalnosc,promotor,miejsce,rok }
+      { \wisie_sprawdz_wymagane:n {##1} }
+    \clist_map_inline:nn { autor,promotor,recenzent }
+      { \wisie_sprawdz_przyklad:nn {##1} {Imię~Nazwisko} }
+    \wisie_sprawdz_przyklad:nn {tytulPL} {Tytuł~pracy~w~języku~polskim}
+    \wisie_sprawdz_przyklad:nn {tytulPL} {Temat~pracy~dyplomowej}
+    \wisie_sprawdz_wybor:nn {plecautora} {M,K}
+    \wisie_sprawdz_wybor:nn {zgodaASAP} {TAK,NIE}
+  }
+\ExplSyntaxOff
+
 % Metadane pliku PDF (autor, tytuł) – wywoływane po wpisaniu danych
 \newcommand{\metadanepdf}{%
+  \sprawdzdanepracy
   \hypersetup{pdfauthor={\wisie@autor}, pdftitle={\wisie@tytulPL},
               pdfsubject={Praca dyplomowa \wisie@rodzajpracy}}}
 
@@ -325,7 +376,7 @@
 \ifwisie@bibpodzial
   \PassOptionsToPackage{defernumbers=true}{biblatex}
 \fi
-\RequirePackage[backend=biber, style=numeric-comp, sorting=none,
+\RequirePackage[backend=biber, style=numeric-comp, sorting=none, natbib=true,
   giveninits=true, maxbibnames=3, minbibnames=3, maxcitenames=2,
   mincitenames=1, uniquename=false, uniquelist=false, isbn=true,
   doi=true, url=true, eprint=false, urldate=short, dateabbrev=false,

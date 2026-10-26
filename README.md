@@ -19,7 +19,8 @@ interlinia 1,25, numeracja rysunków, tabel i wzorów w obrębie rozdziałów.
 - **Oświadczenie** o samodzielnym wykonaniu pracy. Formy męskie lub żeńskie
   („uzyskałem/uzyskałam”) i wybór TAK/NIE ustawiają się automatycznie.
 - Spis treści, wykaz oznaczeń, spis rysunków, spis tabel i załączniki.
-- **Gotowe przykłady**: wzory z objaśnieniami („gdzie: …”), wykresy (pgfplots),
+- **Gotowe przykłady**: wzory z objaśnieniami („gdzie: …”), równania Maxwella
+  z numeracją grupy i poszczególnych równań (`subequations`), wykresy (pgfplots),
   schematy (TikZ), rysunki z plików, rysunki złożone, tabele z jednostkami
   (siunitx), tabela i wykres wczytywane z pliku CSV z Excela, listingi kodu.
 - **Bibliografię** (biblatex + biber) z przykładami: książki, rozdziały,
@@ -33,7 +34,7 @@ interlinia 1,25, numeracja rysunków, tabel i wzorów w obrębie rozdziałów.
 1. Zainstaluj MiKTeX i VS Code – [instrukcja poniżej](#instalacja-latexa-miktex-i-vs-code-windows).
 2. Pobierz formatkę: przycisk **Use this template** (własne repozytorium),
    **Code → Download ZIP** albo
-   `git clone https://github.com/<użytkownik>/<repozytorium>.git`.
+   `git clone https://github.com/MichalJCw/WISiE_PK_formatka.git`.
 3. Otwórz folder formatki w VS Code (**File → Open Folder…**).
 4. Uzupełnij dane w pliku `strony/tytulowa.tex`.
 5. Skompiluj: **Ctrl+Alt+B**. Powstanie plik `praca.pdf`; podgląd otwiera **Ctrl+Alt+V**.
@@ -151,6 +152,16 @@ Na górze pliku `strony/tytulowa.tex`:
 | `\miejsce{}`, `\rok{}` | miejsce i rok na dole strony tytułowej |
 | `\zgodaASAP{}` | `TAK` lub `NIE` – zgoda na udostępnienie pracy w ASAP |
 
+Podczas kompilacji formatka ostrzega w logu (`Class wisiepk Warning`) o pustych
+polach wymaganych, pozostawionych danych przykładowych (np. „Imię Nazwisko”)
+oraz wartościach innych niż `M`/`K` i `TAK`/`NIE`. Ostrzeżenia nie blokują
+kompilacji i nie pojawiają się w PDF. Po pobraniu formatki ostrzeżenia o danych
+przykładowych są oczekiwane – znikną po ich uzupełnieniu.
+
+Pole `\recenzent{}` może być puste. Puste `\plecautora{}` i `\zgodaASAP{}`
+również są dozwolone: w oświadczeniu pozostają warianty do ręcznego skreślenia.
+Jeśli nie ma specjalności, wpisz `\specjalnosc{brak}`.
+
 ### Opcje klasy
 
 Opcje podaje się w pierwszym wierszu pliku `praca.tex`, np.
@@ -162,6 +173,11 @@ Opcje podaje się w pierwszym wierszu pliku `praca.tex`, np.
 | `dwustronnie` | marginesy lustrzane, rozdziały od strony nieparzystej, puste strony bez numeru |
 | `arial` | krój bezszeryfowy (typu Arial) zamiast Times |
 | `bibpodzial` | literatura podzielona na: publikacje, normy, akty prawne, źródła internetowe |
+
+Domyślny krój zapewnia pakiet `newtxtext` (oparty na TeX Gyre Termes),
+a opcja `arial` korzysta z Helvetiki (`helvet`). Są to odpowiedniki krojów
+Times i Arial, a nie fonty Microsoft Times New Roman i Arial. Nie trzeba
+instalować tych fontów systemowych.
 
 ### Rozdziały, rysunki, tabele
 
@@ -176,8 +192,16 @@ odpowiednią linię z `praca.tex`.
 
 Źródła dopisuje się do pliku `literatura.bib`, a w tekście cytuje poleceniem
 `\cite{klucz}`. Do wykazu literatury trafiają tylko pozycje zacytowane w pracy,
-w kolejności pierwszego cytowania. Przykłady dla norm, aktów prawnych i stron
-internetowych:
+w kolejności pierwszego cytowania.
+
+Dostępne są też `\citealt{klucz}`, `\citep{klucz}` i `\citeyear{klucz}`.
+W domyślnym stylu numerycznym pierwsze dwa polecenia drukują numer w nawiasach
+kwadratowych, a ostatnie sam rok. Nazwisko autora z numerem cytowania uzyskasz
+przez `\textcite{klucz}`. Przykłady wyników oraz różnic po przełączeniu na styl
+autor–rok znajdują się w rozdziale 4. Zgodność poleceń zapewnia opcja
+`natbib=true` w `biblatex`; nie dodawaj osobno pakietu `natbib`.
+
+Przykłady dla norm, aktów prawnych i stron internetowych:
 
 ```bibtex
 @standard{pn12831,

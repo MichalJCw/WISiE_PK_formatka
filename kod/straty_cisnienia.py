@@ -20,6 +20,8 @@ def wspolczynnik_tarcia(Re, k, D, tol=1e-8, max_iter=50):
 
 def strata_cisnienia(w, D, L, k, rho=998.0, nu=1.0e-6):
     """Strata ciśnienia [Pa] na odcinku o długości L [m]."""
+    if w == 0:
+        return 0.0  # brak przepływu
     Re = w * D / nu
     if Re < 2300:
         lam = 64.0 / Re  # przepływ laminarny
